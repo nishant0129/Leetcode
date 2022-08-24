@@ -9,6 +9,6 @@ public:
         // if(ldiv%n==0)
         //     return true;
         // return false;
-        	return ((n > 0) && ((1162261467 % n) == 0));
+        	return n > 0 && 1162261467 % n == 0;
     }
 };
