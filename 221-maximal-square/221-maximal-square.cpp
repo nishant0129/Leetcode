@@ -3,6 +3,26 @@ public:
     int maximalSquare(vector<vector<char>>& mat) {
         int row=mat.size(),col=mat[0].size();
         int ans=0;
+        vector<vector<int>>dp(row+1,vector<int>(col+1,0));
+        for(int i=1;i<=row;i++) {
+            for(int j=1;j<=col;j++) {
+                if(mat[i-1][j-1]=='1'){
+                    dp[i][j]=min(dp[i-1][j-1],min(dp[i][j-1],dp[i-1][j]))+1;
+                }
+                ans=max(ans,dp[i][j]);
+            }
+        }
+        return ans*ans;
+    }
+};
+
+
+/*
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& mat) {
+        int row=mat.size(),col=mat[0].size();
+        int ans=0;
         vector<vector<pair<int,int>>>dp(row+1,vector<pair<int,int>>(col+1,pair<int,int>(0,0)));
         for(int i=1;i<=row;i++) {
             for(int j=1;j<=col;j++) {
@@ -16,7 +36,7 @@ public:
         return ans*ans;
     }
 };
-
+*/
 
 /*
 class Solution {
