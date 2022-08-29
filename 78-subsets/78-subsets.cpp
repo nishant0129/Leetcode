@@ -43,7 +43,7 @@
 
 class Solution {
 public:
-    void solve(vector<int>nums,int i,vector<int>out,vector<vector<int>>&ans)
+    void solve(vector<int>&nums,int i,vector<int>out,vector<vector<int>>&ans)
     {
         if(i==nums.size())
         {
@@ -53,7 +53,6 @@ public:
         solve(nums,i+1,out,ans);
         out.push_back(nums[i]);
         solve(nums,i+1,out,ans);
-        
     }
     vector<vector<int>> subsets(vector<int>& nums)
     {
