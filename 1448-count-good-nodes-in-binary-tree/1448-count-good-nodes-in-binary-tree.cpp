@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root,int &cnt,int maxi)
+    void solve(TreeNode* &root,int &cnt,int maxi)
     {
          if(!root)return ;
          if(root->val >=maxi)
