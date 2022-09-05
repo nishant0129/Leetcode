@@ -17,6 +17,7 @@ public:
     }
 };
 */
+  //using dfs
 
 // class Solution {
 // public:
@@ -46,25 +47,57 @@ public:
 // };
 
 
-class Solution {
-public:
-    void solve(Node* root,int level,vector<vector<int>>&ans)
-    {
-        if(!root)
-            return;
-         if(ans.size()==level)
-             ans.push_back({root->val});
-         else
-          ans[level].push_back(root->val);
-         for (Node* child : root->children)
-            solve(child,level+1,ans);
+//using dfs
+// class Solution {
+// public:
+//     void solve(Node* root,int level,vector<vector<int>>&ans)
+//     {
+//         if(!root)
+//             return;
+//          if(ans.size()==level)
+//              ans.push_back({root->val});
+//          else
+//           ans[level].push_back(root->val);
+//          for (Node* child : root->children)
+//             solve(child,level+1,ans);
             
         
-    }
-    vector<vector<int>> levelOrder(Node* root) {
+//     }
+//     vector<vector<int>> levelOrder(Node* root) {
+        
+//         vector<vector<int>>ans;
+//         solve(root,0,ans);
+//        return ans;
+//     }
+   
+//using bfs
+class Solution {
+public:
+     vector<vector<int>> levelOrder(Node* root) {
         
         vector<vector<int>>ans;
-        solve(root,0,ans);
+         if(!root)
+             return ans;
+       queue<Node*>q;
+         q.push(root);
+         while(!q.empty())
+         {
+             int n=q.size();
+             vector<int>cur;
+             for(int i=0; i<n; i++)
+             { 
+                 Node*curnode=q.front();
+                 q.pop();
+                 cur.push_back(curnode->val);
+                 for(auto i: curnode->children)
+                 {   
+                     if(i)
+                     q.push(i);
+                 }
+             }
+             ans.push_back(cur);
+         }
        return ans;
     }
+    
 };
