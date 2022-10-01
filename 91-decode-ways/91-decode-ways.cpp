@@ -23,8 +23,8 @@
 
 class Solution {
 public:
-
-    int solve(string s,int idx,vector<int>&dp)
+    int dp[102];
+    int recur(string s,int idx)
     {
         if(idx==s.size())
             return 1;
@@ -36,14 +36,14 @@ public:
             return dp[idx];
         string temp=s.substr(idx,2);
         
-        int op1=solve(s,idx+1,dp);
-        int op2=(stoi(temp)>=1 and stoi(temp)<=26)?solve(s,idx+2,dp):0;
+        int op1=recur(s,idx+1);
+        int op2=(stoi(temp)>=1 and stoi(temp)<=26)?recur(s,idx+2):0;
         
         return dp[idx]=op1+op2;
     }
     int numDecodings(string s) {
-        vector<int>dp(s.size(),-1);
-       // memset(dp,-1,sizeof dp);
-        return solve(s,0,dp);
+        
+        memset(dp,-1,sizeof dp);
+        return recur(s,0);
     }
 };
