@@ -1,9 +1,6 @@
 class Solution {
 public:
-    string countAndSay(int n) {
-        return rec(n,"1");
-    }
-    string rec(int n,string s)
+    string solve(int n,string s)
     {
         if(n==1) return s;
         string ans="";
@@ -17,6 +14,10 @@ public:
             }
             ans+=to_string(i-j)+s[j];
         }
-        return rec(n-1,ans);
+        return solve(n-1,ans);
     }
+    string countAndSay(int n) {
+        return solve(n,"1");
+    }
+   
 };
