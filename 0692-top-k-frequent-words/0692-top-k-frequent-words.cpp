@@ -9,7 +9,7 @@ public:
     }
     vector<string> topKFrequent(vector<string>& words, int k) {
         unordered_map<string,int>mp;
-        for(auto i: words)
+        for(auto &i: words)
         {
             mp[i]++;
         }
@@ -20,7 +20,7 @@ public:
         }
         sort(res.begin(),res.end(),cmp);
         vector<string>ans;
-        for(auto i:res)
+        for(auto &i:res)
         {
             ans.push_back(i.second);
             k--;
