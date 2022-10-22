@@ -13,7 +13,7 @@ using namespace std;
 class Solution
 {
     public:
-    void recur(vector<string>&words,int a[],int i, int n,vector<string>&ans,string &s)
+    void recur(vector<string>&words,int a[],int i, int n,vector<string>&ans,string s)
     {
         if(i==n )
         {
@@ -24,7 +24,7 @@ class Solution
          {
             s.push_back(words[a[i]][k]);
             recur(words,a,i+1,n,ans,s);
-            s.pop_back();
+           s.pop_back();
         }
     }
     //Function to find list of all words possible by pressing given numbers.
