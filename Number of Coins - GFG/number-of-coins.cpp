@@ -6,33 +6,33 @@ using namespace std;
 class Solution{
 
 	public:
-    
-	int recur(int coins[],int n,int target,int i,int csum,vector<vector<int>>&dp)
-	{
-	    if(csum==target)
-	    return 0;
-	    if(i>=n || csum>target)
-	    return 1e6;
-	   if(dp[i][csum]!=-1) return dp[i][csum];
-	   // int take=0,nottake=0;
-	    if(target>=csum+coins[i]) //pick or not pick 
-	    {
-	        return dp[i][csum]=min(1+recur(coins,n,target,i,csum+coins[i],dp),
-	        recur(coins,n,target,i+1,csum,dp));
-	       //csum+=coins[i];
-	       //take=1+recur(coins,n,target,i+1,csum);
-	    }
-	    else
-	   //  nottake=recur(coins,n,target,i+1,csum);
-	    return dp[i][csum]=recur(coins,n,target,i+1,csum,dp);
-	}
-	int minCoins(int coins[], int M, int V) 
+	int minCoins(int coins[], int n, int target) 
 	{ 
-	    // Your code goes here
-	    vector<vector<int>>dp(M+1,vector<int>(V+1,-1));
-	    int ans= recur(coins,M,V,0,0,dp);
-	    if(ans>=1e6) return -1;
-	    else return ans;
+	    vector<vector<int>>dp(n+1,vector<int>(target+1,0));
+	    for(int j=0;j<target+1;j++)
+	    {
+	        dp[0][j]=1e9;
+	    }
+	    for(int j=1;j<target+1;j++)
+	    {
+	        if(j%coins[0]==0)
+	        dp[1][j]=j/coins[0];
+	        else 
+	        dp[1][j]=1e9;
+	    }
+	    for(int i=2;i<n+1;i++)
+	    {
+	        for(int j=1;j<target+1;j++)
+	        {
+	            if(coins[i-1]<=j)
+	            {
+	                dp[i][j]=min(1+dp[i][j-coins[i-1]],dp[i-1][j]);
+	            }
+	            else 
+	            dp[i][j]=dp[i-1][j];
+	        }
+	    }
+	    return dp[n][target]>=1e9?-1:dp[n][target];
 	} 
 	  
 };
