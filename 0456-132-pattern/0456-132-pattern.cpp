@@ -12,14 +12,11 @@ public:
         stack<int>st;
         for(int j=n-1; j>=0; j--)
         {
-            if(nums[j]>mini[j])
-            {
-                while(!st.empty()&&st.top()<=mini[j])
-                    st.pop();
-                if(!st.empty() && st.top()<nums[j])
-                    return true;
-                st.push(nums[j]);
-            }
+            while(!st.empty()&&st.top()<=mini[j])
+                st.pop();
+            if(!st.empty() && st.top()<nums[j])
+                return true;
+            st.push(nums[j]);
         }
         return false;
     }
