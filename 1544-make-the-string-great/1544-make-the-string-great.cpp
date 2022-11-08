@@ -10,7 +10,7 @@ public:
             }
             else
             {
-                if((st.top()-'0')-(s[i]-'0')==32 ||(st.top()-'0')-(s[i]-'0')==-32  )
+                if((st.top()-s[i]==32) ||(st.top()-s[i])==-32  )
                 {
                     st.pop();
                 }
