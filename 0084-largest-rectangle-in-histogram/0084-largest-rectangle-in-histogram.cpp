@@ -11,8 +11,8 @@ public:
             {
                 int top=heights[st.top()];
                 st.pop();
-                int range=st.empty()?-1:st.top();
-                area=max(area,top*(i-range-1));
+                int j=st.empty()?-1:st.top();
+                area=max(area,top*(i-j-1));
             }
             st.push(i);
         }
