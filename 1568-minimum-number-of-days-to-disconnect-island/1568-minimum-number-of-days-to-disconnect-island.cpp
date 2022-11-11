@@ -1,16 +1,35 @@
 class Solution {
 public:
+    vector<int> dx = {1, -1, 0, 0};
+    vector<int> dy = {0, 0, 1, -1};
     void number_of_island(vector<vector<int>>&grid,int i,int j,vector<vector<int>>&vis)
     {
-        int m=grid.size(),n=grid[0].size();
-        if(i>=m ||i<0||j>=n||j<0||vis[i][j]||!grid[i][j])
-            return ;
+       int n=grid.size(),m=grid[0].size();
+        // if(i>=m ||i<0||j>=n||j<0||vis[i][j]||!grid[i][j])
+        //     return ; 
         vis[i][j]=1;
-        number_of_island(grid,i+1,j,vis);
-        number_of_island(grid,i,j+1,vis);
-        number_of_island(grid,i-1,j,vis);
-        number_of_island(grid,i,j-1,vis);
+        for (int k = 0; k < 4; k++)
+        {
+            int nx = i + dx[k];
+            int ny = j + dy[k];
+            if (nx >= 0 and ny >= 0 and nx < n and ny < m and !vis[nx][ny] and grid[nx][ny])
+            {
+                number_of_island(grid,nx,ny, vis);
+            }
+        }
+        
     }
+    // void number_of_island(vector<vector<int>>&grid,int i,int j,vector<vector<int>>&vis)
+    // {
+    //     int m=grid.size(),n=grid[0].size();
+    //     if(i>=m ||i<0||j>=n||j<0||vis[i][j]||!grid[i][j])
+    //         return ;
+    //     vis[i][j]=1;
+    //     number_of_island(grid,i+1,j,vis);
+    //     number_of_island(grid,i,j+1,vis);
+    //     number_of_island(grid,i-1,j,vis);
+    //     number_of_island(grid,i,j-1,vis);
+    // }
     int minDays(vector<vector<int>>& grid) {
         vector<vector<int>>vis(grid.size(),vector<int>(grid[0].size(),0));
         int cnt=0;
