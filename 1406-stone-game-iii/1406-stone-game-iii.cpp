@@ -25,7 +25,7 @@ public:
              
             for(int i=idx; i-idx<3 && i<v.size();i++)
             {
-                sum+=v[i];
+               // sum+=v[i];
                 ans=min(ans,solve(v,i+1,!alice,dp));
             }
             dp[idx][alice]=ans;
