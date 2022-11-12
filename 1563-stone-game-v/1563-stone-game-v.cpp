@@ -4,12 +4,12 @@ public:
     {
         if(i == j) return 0;
         if(dp[i][j] != -1) return dp[i][j];
-        int csum = 0;   
+        int sum1 = 0;   
         int ans = 0,score=0;
         for(int k=i; k<=j;k++)
         {
-            csum += v[k];
-			int sum1 = csum;     //sum of partition 1
+            sum1 += v[k];
+			    //sum of partition 1
             int sum2 = tsum-sum1;     //sum of partition 2
             if(sum1 > sum2)
                score = sum2 + solve(v , sum2 , k+1 , j , dp);
