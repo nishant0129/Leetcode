@@ -15,10 +15,9 @@ public:
         vector<int> adj[stones.size()];
         for(int i=0;i<stones.size();i++)
         {
-            int a= stones[i][0] , b = stones[i][1];
             for(int j=i+1;j<stones.size();j++)
             {
-                if(stones[j][0]==a || stones[j][1]==b)
+                if(stones[j][0]==stones[i][0] || stones[j][1]==stones[i][1])
                 {
                     adj[i].push_back(j);
                     adj[j].push_back(i);
