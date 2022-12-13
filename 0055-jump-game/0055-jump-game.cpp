@@ -8,7 +8,7 @@ public:
             return false;
         if(dp[idx]!=-1)
             return dp[idx];
-      for(int i=1;i<=nums[idx];i++){
+      for(int i=1; i<=nums[idx] and idx+i < nums.size(); i++){
             if(recur(nums,idx+i,n,dp)) 
                 return  dp[idx]=true;
         }
