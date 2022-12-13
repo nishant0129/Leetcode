@@ -15,7 +15,15 @@ public:
         return dp[idx]=false;
     }
     bool canJump(vector<int>& nums) {
-          vector<int>dp(nums.size()+1,-1);
-       return recur(nums,0,nums.size(),dp) ;
+        //  vector<int>dp(nums.size()+1,-1);
+       //return recur(nums,0,nums.size(),dp) ;
+         int n = nums.size();
+        int last = n-1;
+        for(int i = n-2; i >= 0; i--)
+        {
+            if(i+nums[i] >= last) 
+                last = i;
+        }
+        return last == 0;
     }
 };
