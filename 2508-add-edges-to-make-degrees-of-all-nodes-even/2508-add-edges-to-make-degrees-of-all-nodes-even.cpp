@@ -19,11 +19,11 @@ public:
           if(i.second.size()%2)
               od.push_back(i.first);
         }
-        int degree=od.size();
+         int odd=od.size();
        // cout<<degree<<endl;
-          if (degree == 0) 
+          if (odd == 0) 
             return true;
-          else if (degree == 2)
+          else if (odd == 2)
           {
             int a = od[0];
             int b = od[1];
@@ -34,7 +34,7 @@ public:
                 
             }
          } 
-         else if (degree == 4)
+         else if (odd == 4)
          {
            
             int a = od[0];
