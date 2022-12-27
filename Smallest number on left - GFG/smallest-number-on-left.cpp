@@ -13,14 +13,14 @@ public:
         // code here
     stack<int>s;
     vector<int>ans;
-    ans.push_back(-1);
-    s.push(arr[0]);
-    for(int i=1;i<n;i++)
+    // ans.push_back(-1);
+    // s.push(0);
+    for(int i=0;i<n;i++)
     {
-        while(!s.empty() && s.top()>=arr[i])
+        while(!s.empty() && arr[s.top()]>=arr[i])
         s.pop();
-        int a=s.empty()?-1:s.top();
-        s.push(arr[i]);
+        int a=s.empty()?-1:arr[s.top()];
+        s.push(i);
         ans.push_back(a);
     }
         return ans;
