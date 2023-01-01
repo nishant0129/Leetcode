@@ -1,42 +1,8 @@
 class Solution {
 public:
-//     bool wordPattern(string pattern, string s) {
-//         set<char>s1;
-//         set<string>st;
-//         string word;
-       
-//         vector<string>v;
-//         for(auto i:pattern)
-//         {
-//           s1.insert(i);
-//         }
-//     for (auto x : s) 
-//     {
-//         if (x == ' ')
-//         {
-//             v.push_back(word);
-//             st.insert(word);
-//             word = "";
-//         }
-//         else {
-//             word = word + x;
-//         }
-//     }
-//     st.insert(word);
-//         v.push_back(word);
-//          if(pattern.size()!=v.size())
-//         {
-// return false;}
     
-//         if(s1.size()==st.size())
-//         {
-//            return true;
-//         }
-//         else
-//             return false;
-//     }
-      bool wordPattern(string pattern, string s) 
-      {
+   bool wordPattern(string pattern, string s) {
+       
         map<char,set<vector<string>>>mp;
    
          map<char,int>m1;
