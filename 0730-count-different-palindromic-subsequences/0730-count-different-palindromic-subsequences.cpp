@@ -26,7 +26,7 @@ public:
             if(l>r)
             {
                 ans=(ans+2*recur(a,i+1,j-1,dp)+2)%mod; 
-// make subsequences by taking random exmaple like bcec it has 5 different subsequences then after adding a same char in starting and end like abceca then different subsequeces are 2*5+2; (2*(middle part)+1)
+// make subsequences by taking random exmaple like bcec it has 5 different subsequences then after adding a same char in starting and end like abceca then different subsequeces are 2*5+2; (2*(middle part)+2)
             }
             else if(l==r)
             {
@@ -35,7 +35,7 @@ public:
             }
             else
             {
-                // here the example like ababcaba which contain 2 aur more a as in middle part  subtract from recur(l+1 to r-1 )because  the middle part bc is repeated in recur(i+1 to j-1)
+                // here the example like ababcaba which contain 2 aur more a as in middle part  subtract from recur(l+1 to r-1 )because  the middle part bc subs is repeated in recur(i+1 to j-1)
                 ans= (ans+mod+2*recur(a,i+1,j-1,dp)-recur(a,l+1,r-1,dp))%mod; 
             }
         }
