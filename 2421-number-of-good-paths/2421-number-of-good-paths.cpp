@@ -10,8 +10,8 @@ class Solution {
 		int numberOfGoodPaths(vector<int>& vals, vector<vector<int>>& edges) {
 			int n = vals.size();
 			vector<int> parent(n);
-			map<int,int> max_element;
-			map<int,int> count;
+			vector<int> max_element(n,0);
+			vector<int> count(n,0);
 
 			for(int i=0;i<n;i++)
             {
