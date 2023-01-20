@@ -16,14 +16,14 @@ public:
     {
         if(!root)
             return true;
-        bool flag=false,ok=true;
+        bool flag=false,ok=false;
        flag=inorder(root->left,prev);
         if(root->val<=prev)
             return false;
         else
             prev=root->val;
        ok=inorder(root->right,prev);
-        return ok&flag;
+        return ok&&flag;
         
     }
     
