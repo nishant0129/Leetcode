@@ -12,7 +12,7 @@ B = "cdabcdab"
 <strong>Output:
 </strong>3
 <strong>Explanation:</strong>
-</span><span style="font-size:18px">Repeating A three times (“abcdabcdabcd”),
+</span><span style="font-size:18px">Repeating A three times (abcdabcdabcd),
 B is a substring of it. B is not a substring
 of A when it is repeated less than 3 times.</span>
 </pre>
