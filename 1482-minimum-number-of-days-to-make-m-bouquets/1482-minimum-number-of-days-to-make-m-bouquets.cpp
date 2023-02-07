@@ -26,13 +26,13 @@ public:
     }
     int minDays(vector<int>& bloomDay, int m, int k) {
         int l=1,h=1e9+1,ans=-1;
-        while(l<=h)
+        while(l<h)
         {
             int mid=l+(h-l)/2;
             if(solve(bloomDay,m,k,mid))
             {
                 ans=mid;
-                h=mid-1;
+                h=mid;
             }
             else
             {
