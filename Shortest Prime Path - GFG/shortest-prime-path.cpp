@@ -12,11 +12,11 @@ class Solution{
     {
         prime[0]=false;
         prime[1]=false;
-        for(int i=2; i*i<10000; i++)
+        for(int i=2; i*i<100000; i++)
         {
             if(prime[i])
             {
-                for(int j=2*i; j<10000; j+=i)
+                for(int j=2*i; j<100000; j+=i)
                 {
                     prime[j]=false;
                 }
@@ -30,9 +30,9 @@ class Solution{
         //     prime.assign(10000,true);
         //     sieve(prime);
         // }
-        vector<int>prime(10000,true);
+        vector<int>prime(100000,true);
         sieve(prime);
-        vector<bool>visited(10000,false);
+        vector<bool>visited(100000,false);
         queue<int>q;
         q.push(num1);
         visited[num1]=true;
