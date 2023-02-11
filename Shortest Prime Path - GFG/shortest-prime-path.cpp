@@ -25,11 +25,13 @@ class Solution{
     }
     int shortestPath(int num1,int num2)
     {   
-        static vector<int>prime;
-        if(prime.empty()) {
-            prime.assign(10000,true);
-            sieve(prime);
-        }
+        // static vector<int>prime;
+        // if(prime.empty()) {
+        //     prime.assign(10000,true);
+        //     sieve(prime);
+        // }
+        vector<int>prime(10000,true);
+        sieve(prime);
         vector<bool>visited(10000,false);
         queue<int>q;
         q.push(num1);
