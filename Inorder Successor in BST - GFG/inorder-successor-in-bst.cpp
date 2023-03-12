@@ -109,26 +109,40 @@ struct Node {
 
 class Solution{
   public:
-    
+    // returns the inorder successor of the Node x in BST (rooted at 'root')
     Node * inOrderSuccessor(Node *root, Node *x)
     {
-        if(root == NULL || x == NULL)
-        return NULL;
-        Node* ans;
-      while(root)
-      {
-          if(root->data<=x->data)
-          {
-              root=root->right;
-          }
-          else
-          {
-              ans=root;
-              root=root->left;
-          }
-      }
-        return ans;
-        
+        //Your code here
+        Node* ans=new Node(100000);
+       while(root)
+       {
+           if(root->data<=x->data)
+           {
+               if(root->data==x->data)
+               {
+                  if(root->right) 
+                  {
+                      root=root->right;
+                      while(root)
+                      {
+                          
+                          if(root->data<ans->data)
+                          ans=root;
+                          root=root->left;
+                      }
+                      break;
+                  }
+               }
+               root=root->right;
+           }
+           else
+           { 
+               ans=root;
+               root=root->left;
+           }
+       }
+       Node* ans1=new Node(-1);
+       return ans->data==100000?ans1:ans;
     }
 };
 
