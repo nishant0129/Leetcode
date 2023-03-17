@@ -5,7 +5,7 @@ class Solution:
         multi=1
         for i in range(1,N+1):
             multi*=i
-        return list(str(multi))
+        return (str(multi))
 
 
 #{ 
