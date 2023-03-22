@@ -104,10 +104,22 @@ class Solution{
         solve(root->right,ans,sum);
         sum-=root->data;
     }
+     int recur(Node* root)
+    {
+        
+        if(!root->left && !root->right)
+        return root->data;
+        if(!root->left && root->right)
+        return root->data+recur(root->right);
+        if(!root->right && root->left)
+        return root->data+recur(root->left);
+        return root->data+max(recur(root->left),recur(root->right));
+    }
     int maxPathSum(Node* root)
     {
         //code here
         int ans=INT_MIN,sum=0;
+        return recur(root);
         solve(root,ans,sum);
         return ans;
     }
