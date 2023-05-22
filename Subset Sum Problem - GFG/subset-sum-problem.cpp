@@ -9,17 +9,22 @@ using namespace std;
 
 class Solution{   
 public:
-    bool isSubsetSum(vector<int>nums, int sum){
-        vector<vector<int>>dp(nums.size()+1,vector<int>(sum+1));
-        for(int i=0;i<=nums.size();i++) {
-            for(int j=0;j<=sum;j++) {
-                if(j==0) dp[i][j]=1;
-                else if(i==0) dp[i][j]=0;
-                else if(j-nums[i-1]<0) dp[i][j]=dp[i-1][j];
-                else dp[i][j]=dp[i-1][j]+dp[i-1][j-nums[i-1]];
-            }
-        }
-        return dp[nums.size()][sum];
+   bool solve(vector<int>&arr ,int sum,int idx, vector<vector<int>>&dp)
+   {
+       if(sum==0)
+       return true;
+       if(idx>=arr.size()||sum<0)
+       return false;
+       if(dp[idx][sum]!=-1)
+       return dp[idx][sum];
+       bool notake=solve(arr,sum,idx+1,dp);
+       bool take=solve(arr,sum-arr[idx],idx+1,dp);
+       return dp[idx][sum]=take||notake;
+   }
+    bool isSubsetSum(vector<int>arr, int sum){
+        // code here 
+        vector<vector<int>>dp(arr.size()+1,vector<int>(sum+1,-1));
+       return solve(arr,sum,0,dp);
     }
 };
 
