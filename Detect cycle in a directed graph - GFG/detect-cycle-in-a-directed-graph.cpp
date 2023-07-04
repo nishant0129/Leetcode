@@ -8,13 +8,14 @@ class Solution {
 
  bool dfs(int i,vector<int>adj[],vector<bool>&vis,vector<bool>&dfs_vis)
     {
-        vis[i]=true;
-        dfs_vis[i]=true;
+        
         for(auto child: adj[i])
         {
             if(!vis[child])
             {
                // par[child]=i;
+               vis[child]=true;
+               dfs_vis[child]=true;
                 if(dfs(child,adj,vis,dfs_vis))
                 return true;
              
@@ -31,7 +32,6 @@ class Solution {
     {
         // code here
         vector<bool>vis(V,false),dfs_vis(V,false);
-        vector<int>par(V,-1);
         for(int i=0; i<V; i++)
         {
             if(!vis[i])
