@@ -21,22 +21,20 @@ class Solution {
     	        maxi1=(maxi1,arr[i]);}
     	        else if(arr[i]>maxi2){
     	            maxi3=maxi2;
-    	            maxi2=max(maxi2,arr[i]);
+    	            maxi2=arr[i];
     	        }
     	        else if(arr[i]>maxi3){
-    	            maxi3=max(maxi3,arr[i]);
+    	            maxi3=arr[i];
     	        }
     	    if(mini1>arr[i]){
     	        mini2=mini1;
-    	        mini1=min(mini1,arr[i]);
+    	        mini1=arr[i];
     	    }
     	    else if(mini2>arr[i]){
-    	        mini2=min(mini2,arr[i]);
+    	        mini2=arr[i];
     	    }
     	 
     	}
-    // 	long long mama=mini1*mini2;
-    // 	long long mami=maxi1*maxi2;
         return max(mini1*mini2*maxi1, maxi1*maxi2*maxi3);
     }
 };
