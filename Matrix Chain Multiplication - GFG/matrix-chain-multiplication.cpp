@@ -9,33 +9,22 @@ using namespace std;
 
 class Solution{
 public:
-
-
-int dp[100][100];
-
-int MCM(int* p, int i, int j)
-{
-    if (i == j)
-    {
-        return 0;
-    }
-    if (dp[i][j] != -1)
-    {
+    int dp[100][100];
+    int solve(int i,int j,int arr[]) {
+        if(j-i<=1) return 0;
+        int mini=INT_MAX;
+        if(dp[i][j]!=-1)
         return dp[i][j];
+        for(int k=i+1;k<j;k++) {
+            mini = min(mini,arr[i]*arr[k]*arr[j]+solve(i,k,arr)+solve(k,j,arr));
+        }
+        return dp[i][j]=mini;
+        
     }
-    dp[i][j] = INT_MAX;
-    for (int k = i; k < j; k++)
-    {
-        dp[i][j] = min(dp[i][j], MCM(p, i, k)+ MCM(p, k + 1, j)+ p[i - 1] * p[k] * p[j]);
-    }
-    return dp[i][j];
-}
- 
     int matrixMultiplication(int N, int arr[])
     {
-        // code here
-         memset(dp, -1, sizeof dp);
-        return MCM(arr,1,N-1);
+        memset(dp,-1,sizeof(dp));
+        return solve(0,N-1,arr);
     }
 };
 
