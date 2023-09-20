@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{
 public:
-    int dp[100][100];
+    int dp[105][105];
     int solve(int i,int j,int arr[]) {
         if(j-i<=1) return 0;
         int mini=INT_MAX;
@@ -23,8 +23,28 @@ public:
     }
     int matrixMultiplication(int N, int arr[])
     {
-        memset(dp,-1,sizeof(dp));
-        return solve(0,N-1,arr);
+         memset(dp,0,sizeof(dp));
+        // return solve(0,N-1,arr);
+       
+        for(int i=N; i>=0; i--)
+        {
+            for(int j=0; j<N; j++)
+            {
+                if(j-i<=1)
+                {
+                     dp[i][j]=0;
+                     continue;
+                }
+                int mini=INT_MAX;
+                for(int k=i+1;k<j;k++) {
+                    mini = min(mini,arr[i]*arr[k]*arr[j]+dp[i][k]+dp[k][j]);
+                }
+                 dp[i][j]=mini;
+                
+            }
+        }
+       
+        return dp[0][N-1];
     }
 };
 
